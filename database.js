@@ -2,8 +2,8 @@
 // 이 파일은 모든 데이터베이스 작업을 위한 중앙 집중식 관리를 제공합니다
 
 // Supabase 설정 (실제 사용 시 환경변수로 관리해야 합니다)
-const SUPABASE_URL = 'YOUR_SUPABASE_URL'; // 실제 Supabase URL로 변경
-const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY'; // 실제 Supabase anon key로 변경
+const SUPABASE_URL = 'https://yanthcxoctifnhpekzgg.supabase.co'; // 실제 Supabase URL로 변경
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlhbnRoY3hvY3RpZm5ocGVremdnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE3MDg2MTUsImV4cCI6MjA2NzI4NDYxNX0.8kEkPCfQQ_NXmQhgazmud2YbR1RYDwon7OPJJTRopzo'; // 실제 Supabase anon key로 변경
 
 // Supabase 클라이언트 초기화
 let supabaseClient = null;
