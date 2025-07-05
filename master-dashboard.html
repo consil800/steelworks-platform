@@ -2013,76 +2013,7 @@
             window.location.href = `../3-company-dashboards/${companyId}/admin/index.html`;
         }
 
-        function viewCompanyHomepage(companyId, templateName) {
-            console.log('Viewing company homepage:', companyId, 'Template:', templateName);
-            
-            // 회사 정보 조회
-            const companies = JSON.parse(localStorage.getItem('platform_companies') || '[]');
-            const company = companies.find(c => c.id === companyId);
-            
-            if (!company) {
-                showNotification(`회사 정보를 찾을 수 없습니다.`, 'error');
-                return;
-            }
-            
-            const template = templateName || company.templateSelect;
-            
-            if (template) {
-                // 템플릿에 따른 홈페이지 URL 매핑
-                const templateUrls = {
-                    'scout': '../../1-homepage/templates/index.html',
-                    'upconstruction': '../../1-homepage/templates/index.html', 
-                    'gp': '../../1-homepage/templates/index.html',
-                    'blogy': '../../1-homepage/templates/index.html',
-                    'iportfolio': '../../1-homepage/templates/index.html',
-                    'nice-restaurant': '../../1-homepage/templates/index.html',
-                    'dewi': '../../1-homepage/templates/index.html',
-                    'visible': '../../1-homepage/templates/index.html',
-                    'instant': '../../1-homepage/templates/index.html',
-                    'seokyoung-snt': '../../1-homepage/templates/index.html'
-                };
-                
-                const templateUrl = templateUrls[template];
-                if (templateUrl) {
-                    window.open(templateUrl, '_blank');
-                } else {
-                    showNotification(`${template} 템플릿을 찾을 수 없습니다.`, 'error');
-                }
-            } else {
-                showNotification(`회사의 템플릿 정보가 없습니다.`, 'error');
-            }
-        }
 
-        function addNewCompany() {
-            console.log('Adding new company');
-            
-            const companyName = prompt('새 회사명을 입력하세요:');
-            if (!companyName) return;
-            
-            const companyId = companyName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-            const contactEmail = prompt('회사 대표 이메일을 입력하세요:');
-            if (!contactEmail) return;
-            
-            // localStorage에 회사 정보 저장
-            const companies = JSON.parse(localStorage.getItem('platform_companies') || '[]');
-            const newCompany = {
-                id: companyId,
-                name: companyName,
-                email: contactEmail,
-                status: 'active',
-                createdAt: new Date().toISOString(),
-                users: 0
-            };
-            
-            companies.push(newCompany);
-            localStorage.setItem('platform_companies', JSON.stringify(companies));
-            
-            showNotification(`${companyName} 회사가 성공적으로 추가되었습니다.`, 'success');
-            updateCompanyList();
-            
-            // 마스터 대시보드 통계 동기화
-            updateMasterDashboardStats();
-        }
 
         // 사용자 관리 함수
         function editUser(userId) {
@@ -3323,9 +3254,28 @@
                 
                 console.log('🔄 사용자 상호작용으로 인한 통계 업데이트');
                 setTimeout(() => {
-                    updateMasterDashboardStats();
+                    updateStatistics();
                 }, 100);
             }
+        });
+
+        // 페이지 로드 시 초기화
+        document.addEventListener('DOMContentLoaded', async function() {
+            console.log('🚀 마스터 대시보드 초기화 시작');
+            
+            // 샘플 데이터 정리
+            cleanupSampleData();
+            
+            // 데이터베이스에서 데이터 로드
+            await loadDashboardData();
+            
+            // 통계 업데이트
+            updateStatistics();
+            
+            // 기본 탭 활성화
+            showTab('companies');
+            
+            console.log('✅ 마스터 대시보드 초기화 완료');
         });
     </script>
 </body>
