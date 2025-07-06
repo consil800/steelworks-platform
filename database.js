@@ -2,9 +2,8 @@
 // 이 파일은 모든 데이터베이스 작업을 위한 중앙 집중식 관리를 제공합니다
 
 // Supabase 설정 (환경변수로 관리 권장)
-const SUPABASE_URL = process.env.SUPABASE_URL || 'YOUR_SUPABASE_URL_HERE';
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || 'YOUR_SUPABASE_ANON_KEY_HERE';
-
+const SUPABASE_URL = 'https://zgyawfmjconubxaiamod.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpneWF3Zm1qY29udWJ4YWlhbW9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE3NjQzNzIsImV4cCI6MjA2NzM0MDM3Mn0.shjBE2OQeILwkLLi4E6Bq0-b6YPUs-WFwquexdUiM9A';
 // Supabase 클라이언트 초기화
 let supabaseClient = null;
 
