@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>기술지원 - 남경스틸(주)</title>
+  <meta name="description" content="남경스틸(주) 기술지원 서비스 및 전문 상담">
+  <meta name="keywords" content="철강, 기술지원, 상담, 전문가, 솔루션">
+
+  <!-- Favicons -->
+  <link href="logo.jpg" rel="icon">
+  <link href="logo.jpg" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  
+  <style>
+    body { font-family: 'Noto Sans KR', sans-serif !important; }
+    .login-btn { 
+      background: #0066cc; 
+      color: white; 
+      padding: 8px 20px; 
+      border-radius: 5px; 
+      margin-left: 25px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .login-btn:hover { 
+      background: #0052a3; 
+      color: white;
+    }
+    
+    /* 사용자 프로필 스타일 */
+    .user-profile {
+      margin-left: 25px;
+    }
+    
+    .profile-icon {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 5px 10px;
+      border-radius: 25px;
+    }
+    
+    .profile-icon:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .profile-icon img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fff;
+      margin-right: 8px;
+    }
+    
+    .profile-name {
+      color: #2c3e50;
+      font-weight: 500;
+      font-size: 14px;
+    }
+    
+    /* 추가 NAVIGATION MENU FIXES */
+    .navmenu ul {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .navmenu > ul > li {
+      white-space: nowrap;
+      padding: 15px 16px; /* 균등한 간격 */
+      position: relative;
+    }
+    
+    .navmenu a {
+      color: var(--nav-color, #2c3e50);
+      padding: 12px 0;
+      font-size: 15px;
+      font-family: var(--nav-font);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      transition: 0.3s;
+      position: relative;
+    }
+    
+    .navmenu a i,
+    .navmenu a .bi {
+      font-size: 12px;
+      line-height: 0;
+      margin-left: 5px;
+      transition: 0.3s;
+    }
+    
+    .navmenu > ul > li > a:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -6px;
+      left: 0;
+      background-color: var(--nav-hover-color);
+      visibility: hidden;
+      transform: scaleX(0);
+      transition: all 0.3s ease-in-out 0s;
+    }
+    
+    .navmenu a:hover:before,
+    .navmenu li:hover > a:before,
+    .navmenu .active:before {
+      visibility: visible;
+      transform: scaleX(1);
+    }
+    
+    .navmenu a:hover,
+    .navmenu .active,
+    .navmenu .active:focus,
+    .navmenu li:hover > a {
+      color: var(--nav-hover-color);
+    }
+    
+    .navmenu .dropdown ul {
+      margin: 0;
+      padding: 10px 0;
+      background: #ffffff;
+      display: block;
+      position: absolute;
+      visibility: hidden;
+      left: 14px;
+      top: 130%;
+      opacity: 0;
+      transition: 0.3s;
+      border-radius: 4px;
+      z-index: 99;
+      box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+    }
+    
+    .navmenu .dropdown ul li {
+      min-width: 200px;
+    }
+    
+    .navmenu .dropdown ul a {
+      padding: 10px 20px;
+      font-size: 15px;
+      text-transform: none;
+      color: #2c3e50;
+    }
+    
+    .navmenu .dropdown ul a i {
+      font-size: 12px;
+    }
+    
+    .navmenu .dropdown ul a:hover,
+    .navmenu .dropdown ul .active:hover,
+    .navmenu .dropdown ul li:hover > a {
+      color: #3498db;
+      background-color: #f8f9fa;
+    }
+    
+    .navmenu .dropdown:hover > ul {
+      opacity: 1;
+      top: 100%;
+      visibility: visible;
+    }
+    
+    .navmenu .dropdown .dropdown ul {
+      top: 0;
+      left: -90%;
+      visibility: hidden;
+    }
+    
+    .navmenu .dropdown .dropdown:hover > ul {
+      opacity: 1;
+      top: 0;
+      left: -100%;
+      visibility: visible;
+    }
+    
+    .navmenu .dropdown ul a:hover {
+      color: #3498db;
+      background-color: #f8f9fa;
+    }
+    
+    /* 모바일 네비게이션에서도 드롭다운 처리 */
+    @media (max-width: 1199px) {
+      .navmenu .dropdown ul {
+        position: static;
+        display: none;
+        z-index: 99;
+        padding: 10px 0;
+        margin: 10px 20px;
+        background-color: #ffffff;
+        border: 1px solid #e9ecef;
+        box-shadow: none;
+        border-radius: 6px;
+      }
+      
+      .navmenu .dropdown.active > ul {
+        display: block;
+      }
+    }
+    .support-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+      height: 100%;
+    }
+    .support-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+    .support-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(45deg, #0066cc, #004499);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-size: 30px;
+    }
+    .faq-item {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    .faq-question {
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      padding: 20px;
+      font-weight: 600;
+      font-size: 16px;
+      color: #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-answer {
+      padding: 0 20px 20px;
+      color: #666;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body class="technical-support-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">남경스틸(주)</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html#hero">홈</a></li>
+          <li><a href="index.html#about">회사소개</a></li>
+          <li><a href="index.html#services">제품·서비스</a></li>
+          <li><a href="index.html#team">임직원</a></li>
+          <li class="dropdown"><a href="#"><span>고객지원</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="product-inquiry.html">제품문의</a></li>
+              <li><a href="technical-support.html" class="active">기술지원</a></li>
+            </ul>
+          </li>
+          <li><a href="index.html#contact">문의하기</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <!-- 로그인 전 버튼 -->
+      <a class="login-btn" href="login.html" id="mainLoginBtn">
+        <i class="bi bi-person-circle"></i> <span id="loginBtnText">로그인</span>
+      </a>
+      
+      <!-- 로그인 후 프로필 아이콘 -->
+      <div class="user-profile" id="userProfile" style="display: none;">
+        <div class="profile-icon" onclick="handleProfileClick()">
+          <img id="profileImage" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiM2NjdlZWEiLz4KPHN2ZyB4PSIyMCIgeT0iMjQiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkYQ8L3N2Zz4KPC9zdmc+" alt="프로필" />
+          <span class="profile-name" id="profileName">사용자</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title light-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">기술지원</h1>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Technical Support Section -->
+    <section id="technical-support" class="technical-support section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        
+        <div class="section-title text-center mb-5">
+          <h2>전문 기술지원 서비스</h2>
+          <p>12년 경험의 철강 전문가들이 고객님의 기술적 문제를 해결해드립니다</p>
+        </div>
+
+        <div class="row g-4 mb-5">
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="support-card text-center">
+              <div class="support-icon">
+                <i class="bi bi-headset"></i>
+              </div>
+              <h4>24시간 전화상담</h4>
+              <p>긴급한 기술적 문제가 발생했을 때 언제든지 전문가와 상담하실 수 있습니다.</p>
+              <p><strong>051-314-9701</strong></p>
+              <p class="text-muted">24시간 운영</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="support-card text-center">
+              <div class="support-icon">
+                <i class="bi bi-person-workspace"></i>
+              </div>
+              <h4>현장 기술지원</h4>
+              <p>전문 엔지니어가 직접 현장을 방문하여 기술적 문제를 진단하고 해결책을 제시합니다.</p>
+              <p><strong>전국 서비스</strong></p>
+              <p class="text-muted">신청 후 48시간 내 방문</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="support-card text-center">
+              <div class="support-icon">
+                <i class="bi bi-chat-dots"></i>
+              </div>
+              <h4>온라인 상담</h4>
+              <p>이메일이나 온라인 채팅을 통해 편리하게 기술 상담을 받으실 수 있습니다.</p>
+              <p><strong>namkyungst@naver.com</strong></p>
+              <p class="text-muted">영업일 기준 24시간 내 답변</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h3 class="text-center mb-4">자주 묻는 질문 (FAQ)</h3>
+            
+            <div class="faq-container">
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                <button class="faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                  열연강판과 냉연강판의 차이점은 무엇인가요?
+                  <i class="bi bi-chevron-down"></i>
+                </button>
+                <div id="faq1" class="collapse">
+                  <div class="faq-answer">
+                    열연강판은 1,000°C 이상의 고온에서 압연하여 제조하는 제품으로 표면이 거칠고 두께가 두꺼운 편입니다. 
+                    냉연강판은 상온에서 압연하여 표면이 매끄럽고 정밀도가 높아 가전제품이나 자동차 외판 등에 주로 사용됩니다.
+                  </div>
+                </div>
+              </div>
+
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                <button class="faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                  철강 제품의 품질 보증 기간은 얼마나 되나요?
+                  <i class="bi bi-chevron-down"></i>
+                </button>
+                <div id="faq2" class="collapse">
+                  <div class="faq-answer">
+                    남경스틸(주)의 모든 제품은 출고일로부터 1년간 품질을 보증합니다. 
+                    단, 고객의 부적절한 보관이나 사용으로 인한 손상은 보증 범위에서 제외됩니다.
+                  </div>
+                </div>
+              </div>
+
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                <button class="faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                  맞춤 가공 서비스는 어떤 것들이 있나요?
+                  <i class="bi bi-chevron-down"></i>
+                </button>
+                <div id="faq3" class="collapse">
+                  <div class="faq-answer">
+                    절단, 구멍 가공, 성형, 용접, 표면처리(아연도금, 페인팅 등) 등 다양한 가공 서비스를 제공합니다. 
+                    고객의 도면에 따른 정밀 가공도 가능하니 상담해 주시기 바랍니다.
+                  </div>
+                </div>
+              </div>
+
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                <button class="faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                  소량 주문도 가능한가요?
+                  <i class="bi bi-chevron-down"></i>
+                </button>
+                <div id="faq4" class="collapse">
+                  <div class="faq-answer">
+                    네, 가능합니다. 최소 주문량은 제품에 따라 다르지만, 소량 주문도 환영합니다. 
+                    다만 소량의 경우 단가가 다소 높아질 수 있으니 견적 문의 시 확인해 주시기 바랍니다.
+                  </div>
+                </div>
+              </div>
+
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
+                <button class="faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                  해외 수출도 가능한가요?
+                  <i class="bi bi-chevron-down"></i>
+                </button>
+                <div id="faq5" class="collapse">
+                  <div class="faq-answer">
+                    현재 50개국에 수출하고 있으며, 해외 수출 경험이 풍부합니다. 
+                    수출 관련 서류 작성부터 물류까지 원스톱 서비스를 제공하고 있습니다.
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="row mt-5">
+          <div class="col-lg-8 mx-auto">
+            <div class="support-card">
+              <h4 class="text-center mb-4">기술 상담 요청</h4>
+              <form action="../assets/forms/technical-support.php" method="post">
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <label for="company">회사명</label>
+                    <input type="text" name="company" class="form-control" id="company">
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <label for="name">담당자명 *</label>
+                    <input type="text" name="name" class="form-control" id="name" required>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <label for="phone">연락처 *</label>
+                    <input type="tel" name="phone" class="form-control" id="phone" required>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <label for="email">이메일 *</label>
+                    <input type="email" class="form-control" name="email" id="email" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="issue_type">문의 유형</label>
+                  <select class="form-control" name="issue_type" id="issue_type">
+                    <option value="">유형을 선택해주세요</option>
+                    <option value="제품 사양 문의">제품 사양 문의</option>
+                    <option value="품질 문제">품질 문제</option>
+                    <option value="가공 방법 상담">가공 방법 상담</option>
+                    <option value="용접 기술">용접 기술</option>
+                    <option value="표면처리">표면처리</option>
+                    <option value="기타">기타</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="message">상세 문의 내용 *</label>
+                  <textarea class="form-control" name="message" id="message" rows="5" required placeholder="기술적 문제나 궁금한 점을 상세히 설명해 주세요"></textarea>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">상담 요청하기</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- /Technical Support Section -->
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container footer-top">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">남경스틸(주)</span>
+          </a>
+          <p>12년 전통의 기술력으로 대한민국 철강 산업을 선도하는 기업</p>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>빠른 링크</h4>
+          <ul>
+            <li><a href="index.html#about">회사소개</a></li>
+            <li><a href="index.html#services">제품안내</a></li>
+            <li><a href="#">기술자료</a></li>
+            <li><a href="technical-support.html">고객지원</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>제품</h4>
+          <ul>
+            <li><a href="service1-details.html">열연강판</a></li>
+            <li><a href="service2-details.html">냉연강판</a></li>
+            <li><a href="service3-details.html">특수강</a></li>
+            <li><a href="service4-details.html">맞춤가공</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-6 footer-contact">
+          <h4>연락처</h4>
+          <p>부산시 사상구 낙동대로 832</p>
+          <p>남경스틸(주)</p>
+          <p><strong>전화:</strong> <span>051-314-9701</span></p>
+          <p><strong>이메일:</strong> <span>namkyungst@naver.com</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>&copy; 2025 <strong class="px-1 sitename">남경스틸(주)</strong> All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  
+  <!-- Authentication Scripts -->
+  <script src="shared-assets/js/auth.js"></script>
+  <script src="shared-assets/js/template-login.js"></script>
+  
+  <script>
+    // 프로필 클릭 함수
+    function handleProfileClick() {
+      const user = AuthManager.getCurrentUser();
+      if (user) {
+        AuthManager.redirectToAppropriatePanel();
+      }
+    }
+  </script>
+
+</body>
+</html>
